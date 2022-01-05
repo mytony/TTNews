@@ -13,6 +13,7 @@
 		DDC2CE7C2784D5A100927CF2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DDC2CE7B2784D5A100927CF2 /* Assets.xcassets */; };
 		DDC2CE7F2784D5A100927CF2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DDC2CE7D2784D5A100927CF2 /* LaunchScreen.storyboard */; };
 		DDC2CE872784F96800927CF2 /* TNTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDC2CE862784F96800927CF2 /* TNTabBarController.swift */; };
+		DDC2CE892785064500927CF2 /* UIView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDC2CE882785064500927CF2 /* UIView+Ext.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		DDC2CE7E2784D5A100927CF2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DDC2CE802784D5A100927CF2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DDC2CE862784F96800927CF2 /* TNTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TNTabBarController.swift; sourceTree = "<group>"; };
+		DDC2CE882785064500927CF2 /* UIView+Ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Ext.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,11 +60,12 @@
 			children = (
 				DDC2CE722784D5A000927CF2 /* AppDelegate.swift */,
 				DDC2CE742784D5A000927CF2 /* SceneDelegate.swift */,
-				DDC2CE762784D5A000927CF2 /* NewsViewController.swift */,
 				DDC2CE7B2784D5A100927CF2 /* Assets.xcassets */,
 				DDC2CE7D2784D5A100927CF2 /* LaunchScreen.storyboard */,
 				DDC2CE802784D5A100927CF2 /* Info.plist */,
 				DDC2CE862784F96800927CF2 /* TNTabBarController.swift */,
+				DDC2CE762784D5A000927CF2 /* NewsViewController.swift */,
+				DDC2CE882785064500927CF2 /* UIView+Ext.swift */,
 			);
 			path = TTNews;
 			sourceTree = "<group>";
@@ -139,6 +142,7 @@
 			files = (
 				DDC2CE772784D5A000927CF2 /* NewsViewController.swift in Sources */,
 				DDC2CE872784F96800927CF2 /* TNTabBarController.swift in Sources */,
+				DDC2CE892785064500927CF2 /* UIView+Ext.swift in Sources */,
 				DDC2CE732784D5A000927CF2 /* AppDelegate.swift in Sources */,
 				DDC2CE752784D5A000927CF2 /* SceneDelegate.swift in Sources */,
 			);
