@@ -11,7 +11,7 @@ class TNTabBarController: UITabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        UITabBar.appearance().tintColor = .systemGreen
+        UITabBar.appearance().tintColor = .systemMint
         viewControllers = [createNewsNC()]
     }
     
