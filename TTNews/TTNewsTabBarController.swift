@@ -7,15 +7,15 @@
 
 import UIKit
 
-class TNTabBarController: UITabBarController {
+class TTNewsTabBarController: UITabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
         UITabBar.appearance().tintColor = .systemMint
-        viewControllers = [createNewsNC()]
+        viewControllers = [createNewsNavigationController()]
     }
     
-    func createNewsNC() -> UINavigationController {
+    func createNewsNavigationController() -> UINavigationController {
         let newsVC = NewsViewController()
         let newsIcon = UIImage(systemName: "newspaper")
         newsVC.title = "News"

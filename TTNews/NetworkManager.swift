@@ -19,7 +19,7 @@ class NetworkManager {
         decoder.dateDecodingStrategy = .iso8601
     }
     
-    func getTopHeadlines(page: Int) async throws -> Response {
+    func getTopHeadlines(page: Int) async throws -> NewsResponse {
         guard var components = baseComponents else {
             throw TNError.unknownError
         }
@@ -46,14 +46,14 @@ class NetworkManager {
         }
 
         do {
-            return try decoder.decode(Response.self, from: data)
+            return try decoder.decode(NewsResponse.self, from: data)
         } catch {
             print(error)
             throw TNError.invalidData
         }
     }
     
-    func getTopHeadlinesSources() async throws -> Response {
+    func getTopHeadlinesSources() async throws -> NewsResponse {
         guard var components = baseComponents else {
             throw TNError.unknownError
         }
@@ -79,7 +79,7 @@ class NetworkManager {
         }
 
         do {
-            return try decoder.decode(Response.self, from: data)
+            return try decoder.decode(NewsResponse.self, from: data)
         } catch {
             print(error)
             throw TNError.invalidData

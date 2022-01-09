@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Response: Codable, Hashable {
+struct NewsResponse: Codable, Hashable {
     let status: String
     let totalResults: Int?      // only in top-headlines
     let articles: [Article]?    // only in top-headlines
@@ -23,7 +23,6 @@ struct Article: Codable, Hashable {
     let urlToImage: String?
     let publishedAt: Date
     let content: String?
-    
 }
 
 struct Source: Codable, Hashable {

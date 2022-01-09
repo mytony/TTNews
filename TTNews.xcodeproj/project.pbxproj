@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		DD8D62A1278654F5005C7975 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD8D62A0278654F5005C7975 /* NetworkManager.swift */; };
 		DD8D62A3278659C7005C7975 /* TNError.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD8D62A2278659C7005C7975 /* TNError.swift */; };
-		DD8D62A52786B528005C7975 /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD8D62A42786B528005C7975 /* Response.swift */; };
+		DD8D62A52786B528005C7975 /* NewsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD8D62A42786B528005C7975 /* NewsResponse.swift */; };
 		DD8D62A72788FE21005C7975 /* ArticleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD8D62A62788FE21005C7975 /* ArticleCell.swift */; };
 		DD8D62A927896928005C7975 /* UIFont+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD8D62A827896928005C7975 /* UIFont+Ext.swift */; };
 		DDC2CE732784D5A000927CF2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDC2CE722784D5A000927CF2 /* AppDelegate.swift */; };
@@ -17,7 +17,7 @@
 		DDC2CE772784D5A000927CF2 /* NewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDC2CE762784D5A000927CF2 /* NewsViewController.swift */; };
 		DDC2CE7C2784D5A100927CF2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DDC2CE7B2784D5A100927CF2 /* Assets.xcassets */; };
 		DDC2CE7F2784D5A100927CF2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DDC2CE7D2784D5A100927CF2 /* LaunchScreen.storyboard */; };
-		DDC2CE872784F96800927CF2 /* TNTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDC2CE862784F96800927CF2 /* TNTabBarController.swift */; };
+		DDC2CE872784F96800927CF2 /* TTNewsTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDC2CE862784F96800927CF2 /* TTNewsTabBarController.swift */; };
 		DDC2CE892785064500927CF2 /* UIView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDC2CE882785064500927CF2 /* UIView+Ext.swift */; };
 		DDF5E4C6278A48E600F5BB46 /* UIViewController+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF5E4C5278A48E600F5BB46 /* UIViewController+Ext.swift */; };
 /* End PBXBuildFile section */
@@ -25,7 +25,7 @@
 /* Begin PBXFileReference section */
 		DD8D62A0278654F5005C7975 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		DD8D62A2278659C7005C7975 /* TNError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TNError.swift; sourceTree = "<group>"; };
-		DD8D62A42786B528005C7975 /* Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
+		DD8D62A42786B528005C7975 /* NewsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsResponse.swift; sourceTree = "<group>"; };
 		DD8D62A62788FE21005C7975 /* ArticleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleCell.swift; sourceTree = "<group>"; };
 		DD8D62A827896928005C7975 /* UIFont+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Ext.swift"; sourceTree = "<group>"; };
 		DDC2CE6F2784D5A000927CF2 /* TTNews.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TTNews.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -35,7 +35,7 @@
 		DDC2CE7B2784D5A100927CF2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DDC2CE7E2784D5A100927CF2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DDC2CE802784D5A100927CF2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		DDC2CE862784F96800927CF2 /* TNTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TNTabBarController.swift; sourceTree = "<group>"; };
+		DDC2CE862784F96800927CF2 /* TTNewsTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TTNewsTabBarController.swift; sourceTree = "<group>"; };
 		DDC2CE882785064500927CF2 /* UIView+Ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Ext.swift"; sourceTree = "<group>"; };
 		DDF5E4C5278A48E600F5BB46 /* UIViewController+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Ext.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -76,9 +76,9 @@
 				DDC2CE7B2784D5A100927CF2 /* Assets.xcassets */,
 				DDC2CE7D2784D5A100927CF2 /* LaunchScreen.storyboard */,
 				DDC2CE802784D5A100927CF2 /* Info.plist */,
-				DDC2CE862784F96800927CF2 /* TNTabBarController.swift */,
+				DDC2CE862784F96800927CF2 /* TTNewsTabBarController.swift */,
 				DDC2CE762784D5A000927CF2 /* NewsViewController.swift */,
-				DD8D62A42786B528005C7975 /* Response.swift */,
+				DD8D62A42786B528005C7975 /* NewsResponse.swift */,
 				DD8D62A0278654F5005C7975 /* NetworkManager.swift */,
 				DD8D62A2278659C7005C7975 /* TNError.swift */,
 				DD8D62A62788FE21005C7975 /* ArticleCell.swift */,
@@ -166,14 +166,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DD8D62A52786B528005C7975 /* Response.swift in Sources */,
+				DD8D62A52786B528005C7975 /* NewsResponse.swift in Sources */,
 				DD8D62A1278654F5005C7975 /* NetworkManager.swift in Sources */,
 				DDC2CE772784D5A000927CF2 /* NewsViewController.swift in Sources */,
 				DDF5E4C6278A48E600F5BB46 /* UIViewController+Ext.swift in Sources */,
 				DD8D62A72788FE21005C7975 /* ArticleCell.swift in Sources */,
 				DD8D62A927896928005C7975 /* UIFont+Ext.swift in Sources */,
 				DD8D62A3278659C7005C7975 /* TNError.swift in Sources */,
-				DDC2CE872784F96800927CF2 /* TNTabBarController.swift in Sources */,
+				DDC2CE872784F96800927CF2 /* TTNewsTabBarController.swift in Sources */,
 				DDC2CE892785064500927CF2 /* UIView+Ext.swift in Sources */,
 				DDC2CE732784D5A000927CF2 /* AppDelegate.swift in Sources */,
 				DDC2CE752784D5A000927CF2 /* SceneDelegate.swift in Sources */,

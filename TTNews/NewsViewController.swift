@@ -32,7 +32,6 @@ class NewsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .secondarySystemBackground
-//        sourcesScrollView.backgroundColor = .green
         configureScrollView()
         configureCollectionView()
 //        getSources()
@@ -139,12 +138,9 @@ class NewsViewController: UIViewController {
         Task {
             do {
                 let response = try await NetworkManager.shared.getTopHeadlines(page: 1)
-//                print("N=", response.totalResults)
                 if let articles = response.articles {
-//                    print("Articles count=", articles.count)
                     self.articles.append(contentsOf: articles)
                     self.updateData(on: self.articles)
-//                    print("self.articles is updated. N=", self.articles.count)
                 }
             } catch {
                 if let tnError = error as? TNError {
