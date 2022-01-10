@@ -20,6 +20,8 @@
 		DDC2CE872784F96800927CF2 /* TTNewsTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDC2CE862784F96800927CF2 /* TTNewsTabBarController.swift */; };
 		DDC2CE892785064500927CF2 /* UIView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDC2CE882785064500927CF2 /* UIView+Ext.swift */; };
 		DDF5E4C6278A48E600F5BB46 /* UIViewController+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF5E4C5278A48E600F5BB46 /* UIViewController+Ext.swift */; };
+		DDF5E4CA278B7EDB00F5BB46 /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF5E4C9278B7EDB00F5BB46 /* String+Ext.swift */; };
+		DDF5E4CC278CF46500F5BB46 /* ArticleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF5E4CB278CF46500F5BB46 /* ArticleViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +40,8 @@
 		DDC2CE862784F96800927CF2 /* TTNewsTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TTNewsTabBarController.swift; sourceTree = "<group>"; };
 		DDC2CE882785064500927CF2 /* UIView+Ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Ext.swift"; sourceTree = "<group>"; };
 		DDF5E4C5278A48E600F5BB46 /* UIViewController+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Ext.swift"; sourceTree = "<group>"; };
+		DDF5E4C9278B7EDB00F5BB46 /* String+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Ext.swift"; sourceTree = "<group>"; };
+		DDF5E4CB278CF46500F5BB46 /* ArticleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +86,7 @@
 				DD8D62A0278654F5005C7975 /* NetworkManager.swift */,
 				DD8D62A2278659C7005C7975 /* TNError.swift */,
 				DD8D62A62788FE21005C7975 /* ArticleCell.swift */,
+				DDF5E4CB278CF46500F5BB46 /* ArticleViewController.swift */,
 			);
 			path = TTNews;
 			sourceTree = "<group>";
@@ -92,6 +97,7 @@
 				DDF5E4C5278A48E600F5BB46 /* UIViewController+Ext.swift */,
 				DDC2CE882785064500927CF2 /* UIView+Ext.swift */,
 				DD8D62A827896928005C7975 /* UIFont+Ext.swift */,
+				DDF5E4C9278B7EDB00F5BB46 /* String+Ext.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -172,9 +178,11 @@
 				DDF5E4C6278A48E600F5BB46 /* UIViewController+Ext.swift in Sources */,
 				DD8D62A72788FE21005C7975 /* ArticleCell.swift in Sources */,
 				DD8D62A927896928005C7975 /* UIFont+Ext.swift in Sources */,
+				DDF5E4CA278B7EDB00F5BB46 /* String+Ext.swift in Sources */,
 				DD8D62A3278659C7005C7975 /* TNError.swift in Sources */,
 				DDC2CE872784F96800927CF2 /* TTNewsTabBarController.swift in Sources */,
 				DDC2CE892785064500927CF2 /* UIView+Ext.swift in Sources */,
+				DDF5E4CC278CF46500F5BB46 /* ArticleViewController.swift in Sources */,
 				DDC2CE732784D5A000927CF2 /* AppDelegate.swift in Sources */,
 				DDC2CE752784D5A000927CF2 /* SceneDelegate.swift in Sources */,
 			);

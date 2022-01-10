@@ -13,7 +13,7 @@ class NewsViewController: UIViewController {
         case main
     }
 
-    var sourcesScrollView = UIScrollView()
+    var scrollView = UIScrollView()
     
     var stackView: UIStackView = {
         let stackView = UIStackView()
@@ -27,128 +27,100 @@ class NewsViewController: UIViewController {
     
     var dataSource: UICollectionViewDiffableDataSource<Section, Article>! = nil
     var collectionView: UICollectionView! = nil
+    
     var articles: [Article] = []
+    var currentCategory = ""
+    var currentPage = 0
+    var hasMoreArticles = true
+    var isLoadingMoreArticles = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .secondarySystemBackground
         configureScrollView()
         configureCollectionView()
-//        getSources()
-//        getArticles()
+        getArticles()
         configureDataSource()
-        getEverything()
+        
+        let categories = Category.allCases.map { "\($0)" }
+        configureButtonsInScrollView(with: categories)
     }
     
     // MARK: - Horizontal scroll view
     func configureScrollView() {
-        view.addSubview(sourcesScrollView)
-        sourcesScrollView.addSubview(stackView)
+        view.addSubview(scrollView)
+        scrollView.addSubview(stackView)
         
-        sourcesScrollView.translatesAutoresizingMaskIntoConstraints = false
+        scrollView.translatesAutoresizingMaskIntoConstraints = false
         stackView.translatesAutoresizingMaskIntoConstraints = false // stack view won't display without this line
         
         NSLayoutConstraint.activate([
-            sourcesScrollView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            sourcesScrollView.heightAnchor.constraint(equalToConstant: 60),
-            sourcesScrollView.leadingAnchor.constraint(equalTo: view.layoutMarginsGuide.leadingAnchor),
-            sourcesScrollView.trailingAnchor.constraint(equalTo: view.layoutMarginsGuide.trailingAnchor),
-            stackView.heightAnchor.constraint(equalTo: sourcesScrollView.heightAnchor), // disable vertical scrolling
+            scrollView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            scrollView.heightAnchor.constraint(equalToConstant: 60),
+            scrollView.leadingAnchor.constraint(equalTo: view.layoutMarginsGuide.leadingAnchor),
+            scrollView.trailingAnchor.constraint(equalTo: view.layoutMarginsGuide.trailingAnchor),
+            stackView.heightAnchor.constraint(equalTo: scrollView.heightAnchor), // disable vertical scrolling
         ])
         
-        stackView.pinToEdges(of: sourcesScrollView)
-        sourcesScrollView.showsHorizontalScrollIndicator = false
+        stackView.pinToEdges(of: scrollView)
+        scrollView.showsHorizontalScrollIndicator = false
     }
     
-    func configureSourceButtons(sources: [String]) {
-        for i in 0..<sources.count {
+    func configureButtonsInScrollView(with categories: [String]) {
+        print(#function, categories)
+        for i in 0..<categories.count {
             var config = UIButton.Configuration.tinted()
-            config.title = sources[i]
+            config.title = categories[i].capitalizingFirstLetter()
             config.baseBackgroundColor = .systemMint
             config.baseForegroundColor = .secondaryLabel
             
             // click the button to filter out the articles from the source
             let button = UIButton(configuration: config, primaryAction: UIAction(handler: { [weak self] action in
                 guard let self = self else { return }
-                let filteredArticles = self.articles.filter { $0.source.name == sources[i] }
-                self.updateData(on: filteredArticles)
+                self.getArticles(category: categories[i], page: 1)
+                self.collectionView.setContentOffset(.zero, animated: false)
             }))
             stackView.addArrangedSubview(button)
         }
     }
     
     // MARK: - Networking
-    func getEverything() {
+    func getArticles(category: String = "", page: Int = 1) {
+        isLoadingMoreArticles = true
         Task {
             do {
-                var response = try await NetworkManager.shared.getTopHeadlines(page: 1)
-                guard response.status == "ok" else { return }
-                
-                print("Finish getting article")
-                
-                if let articles = response.articles {
-                    self.articles.append(contentsOf: articles)
-                    self.updateData(on: self.articles)
+                let response = try await NetworkManager.shared.getTopHeadlines(category: category, page: page)
+                guard let articles = response.articles else {
+                    isLoadingMoreArticles = false
+                    return
                 }
-                
-                response = try await NetworkManager.shared.getTopHeadlinesSources()
-                print("Finish getting sources")
-                let sourceNames = response.sources?.map { $0.name }
-                if let sourceNames = sourceNames {
-                    
-                    // Filter out the sources that do not have articles
-                    let sourcesFromArticles = self.articles.map { $0.source.name }
-                    let intersectSources = Array(Set(sourcesFromArticles).intersection(sourceNames))
-                    DispatchQueue.main.async {
-                        self.configureSourceButtons(sources: intersectSources)
-                    }
-                }
+                updateUI(with: articles, category: category, page: page)
+                isLoadingMoreArticles = false
             } catch {
                 if let tnError = error as? TNError {
                     print(tnError.rawValue)
+                    print("Printing the error")
                 }
-            }
-            
-        }
-    }
-    
-    func getSources() {
-        print(#function)
-        Task {
-            do {
-                let response = try await NetworkManager.shared.getTopHeadlinesSources()
-                let sourceNames = response.sources?.map { $0.name }
-                if let sourceNames = sourceNames {
-                    print("N of sources = ", sourceNames.count)
-                    print(#function, "articles has", articles.count)
-                    DispatchQueue.main.async {
-                        self.configureSourceButtons(sources: sourceNames)
-                    }
-                }
-            } catch {
-                if let tnError = error as? TNError {
-                    print(tnError.rawValue)
-                }
+                isLoadingMoreArticles = false
             }
         }
     }
     
-    func getArticles() {
-        print(#function)
-        Task {
-            do {
-                let response = try await NetworkManager.shared.getTopHeadlines(page: 1)
-                if let articles = response.articles {
-                    self.articles.append(contentsOf: articles)
-                    self.updateData(on: self.articles)
-                }
-            } catch {
-                if let tnError = error as? TNError {
-                    print(tnError.rawValue)
-                }
-            }
-            
+    func updateUI(with articles: [Article], category: String, page: Int) {
+        if articles.count < NetworkManager.defaultPageSize {
+            hasMoreArticles = false
         }
+        
+        if page <= currentPage {        // If it's from pressing category button
+            self.articles.removeAll()
+        } else if articles.isEmpty {
+            return
+        }
+        
+        currentCategory = category
+        currentPage = page
+        self.articles.append(contentsOf: articles)
+        self.updateData(on: self.articles)
     }
 }
 
@@ -174,9 +146,6 @@ extension NewsViewController {
         let layout = UICollectionViewCompositionalLayout(section: section)
         return layout
     }
-}
-
-extension NewsViewController {
     
     func configureCollectionView() {
         collectionView = UICollectionView(frame: .zero, collectionViewLayout: createLayout())
@@ -186,7 +155,7 @@ extension NewsViewController {
         view.addSubview(collectionView)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            collectionView.topAnchor.constraint(equalTo: sourcesScrollView.bottomAnchor, constant: 8),
+            collectionView.topAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: 8),
             collectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
             collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
@@ -212,13 +181,10 @@ extension NewsViewController {
     }
     
     func updateData(on articles: [Article]) {
-        print(#function)
         var snapshot = NSDiffableDataSourceSnapshot<Section, Article>()
         snapshot.appendSections([.main])
         snapshot.appendItems(articles)
-        
         dataSource.apply(snapshot, animatingDifferences: true)
-        print(#function, "end")
     }
 }
 
@@ -233,5 +199,16 @@ extension NewsViewController: UICollectionViewDelegate {
         }
 
         presentSafariVC(with: url)
+    }
+    
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        let offsetY = scrollView.contentOffset.y
+        let contentHeight = scrollView.contentSize.height
+        let height = scrollView.frame.size.height
+        
+        if offsetY > contentHeight - height {
+            guard hasMoreArticles, !isLoadingMoreArticles else { return }
+            getArticles(category: currentCategory, page: currentPage+1)
+        }
     }
 }

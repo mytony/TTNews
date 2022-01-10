@@ -7,6 +7,16 @@
 
 import UIKit
 
+enum Category: CaseIterable {
+    case general
+    case business
+    case entertainment
+    case health
+    case science
+    case sports
+    case technology
+}
+
 class NetworkManager {
     
     static let shared = NetworkManager()
@@ -14,21 +24,22 @@ class NetworkManager {
     private let apiKey = "PUT YOUR KEY HERE"
     let cache = NSCache<NSString, UIImage>()
     let decoder = JSONDecoder()
+    static let defaultPageSize = 20
     
     private init() {
         decoder.dateDecodingStrategy = .iso8601
     }
     
-    func getTopHeadlines(page: Int) async throws -> NewsResponse {
+    func getTopHeadlines(category: String = "", page: Int = 1) async throws -> NewsResponse {
         guard var components = baseComponents else {
             throw TNError.unknownError
         }
 
-//        components.path = "/v2/top-headlines/sources"
         components.path = "/v2/top-headlines"
         components.queryItems = [
-//            URLQueryItem(name: "country", value: "tw"),
             URLQueryItem(name: "country", value: "us"),
+            URLQueryItem(name: "category", value: category),
+            URLQueryItem(name: "page", value: String(page)),
         ]
         
         guard let url = components.url else {
@@ -36,6 +47,7 @@ class NetworkManager {
         }
         
         print(url)
+        
         var request = URLRequest(url: url)
         request.setValue(apiKey, forHTTPHeaderField: "X-API-Key")
 
@@ -60,7 +72,6 @@ class NetworkManager {
 
         components.path = "/v2/top-headlines/sources"
         components.queryItems = [
-//            URLQueryItem(name: "country", value: "tw"),
             URLQueryItem(name: "country", value: "us"),
         ]
         

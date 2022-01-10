@@ -8,8 +8,8 @@
 import Foundation
 
 struct NewsResponse: Codable, Hashable {
-    let status: String
-    let totalResults: Int?      // only in top-headlines
+//    let status: String
+//    let totalResults: Int?      // only in top-headlines
     let articles: [Article]?    // only in top-headlines
     let sources: [Source]?      // only in top-headlines/sources
 }
