@@ -11,7 +11,6 @@ class TTNewsTabBarController: UITabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        UITabBar.appearance().tintColor = .systemMint
         viewControllers = [createNewsNavigationController()]
     }
     
@@ -22,5 +21,4 @@ class TTNewsTabBarController: UITabBarController {
         newsVC.tabBarItem = UITabBarItem(title: "News", image: newsIcon, tag: 0)
         return UINavigationController(rootViewController: newsVC)
     }
-    
 }

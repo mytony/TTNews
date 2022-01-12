@@ -46,6 +46,11 @@ class NewsViewController: UIViewController {
         configureButtonsInScrollView(with: categories)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.setToolbarHidden(true, animated: true)
+    }
+    
     // MARK: - Horizontal scroll view
     func configureScrollView() {
         view.addSubview(scrollView)
@@ -71,7 +76,6 @@ class NewsViewController: UIViewController {
         for i in 0..<categories.count {
             var config = UIButton.Configuration.tinted()
             config.title = categories[i].capitalizingFirstLetter()
-            config.baseBackgroundColor = .systemMint
             config.baseForegroundColor = .secondaryLabel
             
             // click the button to filter out the articles from the source
@@ -133,7 +137,6 @@ extension NewsViewController {
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
 
         let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
-//                                              heightDimension: .absolute(44))
                                                heightDimension: .fractionalHeight(0.4))
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitem: item, count: 2)
         let spacing = CGFloat(10)
@@ -167,7 +170,6 @@ extension NewsViewController {
     func configureDataSource() {
         let cellRegistration = UICollectionView.CellRegistration<ArticleCell, Article> { (cell, indexPath, article) in
             cell.set(article: article)
-//            cell.titleLabel.font = .preferredFont(forTextStyle: .headline).bold
             cell.titleLabel.font = .preferredFont(forTextStyle: .headline)
             cell.titleLabel.numberOfLines = 6
             cell.contentView.backgroundColor = .systemBackground
@@ -198,7 +200,9 @@ extension NewsViewController: UICollectionViewDelegate {
             return
         }
 
-        presentSafariVC(with: url)
+        let articleViewController = ArticleViewController(with: url)
+        articleViewController.hidesBottomBarWhenPushed = true
+        navigationController?.pushViewController(articleViewController, animated: true)
     }
     
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {

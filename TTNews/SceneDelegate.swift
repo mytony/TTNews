@@ -21,6 +21,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window?.windowScene = windowScene
         window?.rootViewController = TTNewsTabBarController()
         window?.makeKeyAndVisible()
+        
+        window?.tintColor = .systemMint
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
