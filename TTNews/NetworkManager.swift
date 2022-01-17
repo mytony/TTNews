@@ -26,8 +26,20 @@ class NetworkManager {
     let decoder = JSONDecoder()
     static let defaultPageSize = 20
     
+    private var categories = [String]()
+    
     private init() {
         decoder.dateDecodingStrategy = .iso8601
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(updateCategories(notification:)), name: Notification.Name(rawValue: "CategorySettingChanged"), object: nil)
+    }
+    
+    @objc func updateCategories(notification: Notification) {
+        // access user info to get the categoreis string array
+        let extraInfo = notification.userInfo
+        if let categories = extraInfo?["categories"] {
+            print(categories)
+        }
     }
     
     func getTopHeadlines(category: String = "", page: Int = 1) async throws -> NewsResponse {

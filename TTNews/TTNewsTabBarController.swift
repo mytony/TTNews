@@ -11,14 +11,24 @@ class TTNewsTabBarController: UITabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        viewControllers = [createNewsNavigationController()]
+        viewControllers = [createNewsNavigationController(), createSettingsNavigationController()]
     }
     
     func createNewsNavigationController() -> UINavigationController {
         let newsVC = NewsViewController()
         let newsIcon = UIImage(systemName: "newspaper")
+        let selectedIcon = UIImage(systemName: "newspaper.fill")
         newsVC.title = "News"
-        newsVC.tabBarItem = UITabBarItem(title: "News", image: newsIcon, tag: 0)
+        newsVC.tabBarItem = UITabBarItem(title: "News", image: newsIcon, selectedImage: selectedIcon)
         return UINavigationController(rootViewController: newsVC)
+    }
+    
+    func createSettingsNavigationController() -> UINavigationController {
+        let settingsVC = SettingsViewController()
+        let settingsIcon = UIImage(systemName: "gearshape")
+        let selectedIcon = UIImage(systemName: "gearshape.fill")
+        settingsVC.title = "Settings"
+        settingsVC.tabBarItem = UITabBarItem(title: "Settings", image: settingsIcon, selectedImage: selectedIcon)
+        return UINavigationController(rootViewController: settingsVC)
     }
 }

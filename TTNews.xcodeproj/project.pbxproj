@@ -21,6 +21,8 @@
 		DDC2CE892785064500927CF2 /* UIView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDC2CE882785064500927CF2 /* UIView+Ext.swift */; };
 		DDF5E4CA278B7EDB00F5BB46 /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF5E4C9278B7EDB00F5BB46 /* String+Ext.swift */; };
 		DDF5E4CC278CF46500F5BB46 /* ArticleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF5E4CB278CF46500F5BB46 /* ArticleViewController.swift */; };
+		DDF5E4D2278F61A600F5BB46 /* SelectionButtonsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF5E4D1278F61A600F5BB46 /* SelectionButtonsView.swift */; };
+		DDF5E4D4278F62FE00F5BB46 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF5E4D3278F62FE00F5BB46 /* SettingsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +42,8 @@
 		DDC2CE882785064500927CF2 /* UIView+Ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Ext.swift"; sourceTree = "<group>"; };
 		DDF5E4C9278B7EDB00F5BB46 /* String+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Ext.swift"; sourceTree = "<group>"; };
 		DDF5E4CB278CF46500F5BB46 /* ArticleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleViewController.swift; sourceTree = "<group>"; };
+		DDF5E4D1278F61A600F5BB46 /* SelectionButtonsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionButtonsView.swift; sourceTree = "<group>"; };
+		DDF5E4D3278F62FE00F5BB46 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,18 +77,15 @@
 			isa = PBXGroup;
 			children = (
 				DDF5E4C8278A572D00F5BB46 /* Extensions */,
-				DDC2CE722784D5A000927CF2 /* AppDelegate.swift */,
-				DDC2CE742784D5A000927CF2 /* SceneDelegate.swift */,
-				DDC2CE7B2784D5A100927CF2 /* Assets.xcassets */,
-				DDC2CE7D2784D5A100927CF2 /* LaunchScreen.storyboard */,
+				DDF5E4CF278E5B7600F5BB46 /* Screens */,
+				DDF5E4D0278E5BC000F5BB46 /* Support */,
 				DDC2CE802784D5A100927CF2 /* Info.plist */,
 				DDC2CE862784F96800927CF2 /* TTNewsTabBarController.swift */,
-				DDC2CE762784D5A000927CF2 /* NewsViewController.swift */,
 				DD8D62A42786B528005C7975 /* NewsResponse.swift */,
 				DD8D62A0278654F5005C7975 /* NetworkManager.swift */,
 				DD8D62A2278659C7005C7975 /* TNError.swift */,
 				DD8D62A62788FE21005C7975 /* ArticleCell.swift */,
-				DDF5E4CB278CF46500F5BB46 /* ArticleViewController.swift */,
+				DDF5E4D1278F61A600F5BB46 /* SelectionButtonsView.swift */,
 			);
 			path = TTNews;
 			sourceTree = "<group>";
@@ -97,6 +98,27 @@
 				DDF5E4C9278B7EDB00F5BB46 /* String+Ext.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		DDF5E4CF278E5B7600F5BB46 /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				DDC2CE762784D5A000927CF2 /* NewsViewController.swift */,
+				DDF5E4CB278CF46500F5BB46 /* ArticleViewController.swift */,
+				DDF5E4D3278F62FE00F5BB46 /* SettingsViewController.swift */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
+		DDF5E4D0278E5BC000F5BB46 /* Support */ = {
+			isa = PBXGroup;
+			children = (
+				DDC2CE722784D5A000927CF2 /* AppDelegate.swift */,
+				DDC2CE742784D5A000927CF2 /* SceneDelegate.swift */,
+				DDC2CE7B2784D5A100927CF2 /* Assets.xcassets */,
+				DDC2CE7D2784D5A100927CF2 /* LaunchScreen.storyboard */,
+			);
+			path = Support;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -175,8 +197,10 @@
 				DD8D62A72788FE21005C7975 /* ArticleCell.swift in Sources */,
 				DD8D62A927896928005C7975 /* UIFont+Ext.swift in Sources */,
 				DDF5E4CA278B7EDB00F5BB46 /* String+Ext.swift in Sources */,
+				DDF5E4D2278F61A600F5BB46 /* SelectionButtonsView.swift in Sources */,
 				DD8D62A3278659C7005C7975 /* TNError.swift in Sources */,
 				DDC2CE872784F96800927CF2 /* TTNewsTabBarController.swift in Sources */,
+				DDF5E4D4278F62FE00F5BB46 /* SettingsViewController.swift in Sources */,
 				DDC2CE892785064500927CF2 /* UIView+Ext.swift in Sources */,
 				DDF5E4CC278CF46500F5BB46 /* ArticleViewController.swift in Sources */,
 				DDC2CE732784D5A000927CF2 /* AppDelegate.swift in Sources */,

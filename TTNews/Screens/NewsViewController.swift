@@ -33,14 +33,16 @@ class NewsViewController: UIViewController {
     var currentPage = 0
     var hasMoreArticles = true
     var isLoadingMoreArticles = false
+    var categories = [String]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .secondarySystemBackground
+        configureNotification()
         configureScrollView()
         configureCollectionView()
-        getArticles()
         configureDataSource()
+        getArticles()
         
         let categories = Category.allCases.map { "\($0)" }
         configureButtonsInScrollView(with: categories)
@@ -49,9 +51,23 @@ class NewsViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setToolbarHidden(true, animated: true)
+        // TODO: switch to the first category
     }
     
-    // MARK: - Horizontal scroll view
+    func configureNotification() {
+        NotificationCenter.default.addObserver(self, selector: #selector(updateCategories(notification:)), name: Notification.Name(rawValue: "CategorySettingChanged"), object: nil)
+    }
+    
+    @objc func updateCategories(notification: Notification) {
+        // access user info to get the categoreis string array
+        let extraInfo = notification.userInfo
+        if let categories = extraInfo?["categories"] as? [String] {
+            configureButtonsInScrollView(with: categories)
+        }
+    }
+    
+    // MARK: Horizontal scroll view
+    
     func configureScrollView() {
         view.addSubview(scrollView)
         scrollView.addSubview(stackView)
@@ -72,7 +88,12 @@ class NewsViewController: UIViewController {
     }
     
     func configureButtonsInScrollView(with categories: [String]) {
-        print(#function, categories)
+        // remove all subviews
+        for view in stackView.arrangedSubviews {
+            stackView.removeArrangedSubview(view)
+            view.removeFromSuperview()
+        }
+        
         for i in 0..<categories.count {
             var config = UIButton.Configuration.tinted()
             config.title = categories[i].capitalizingFirstLetter()
@@ -82,7 +103,7 @@ class NewsViewController: UIViewController {
             let button = UIButton(configuration: config, primaryAction: UIAction(handler: { [weak self] action in
                 guard let self = self else { return }
                 self.getArticles(category: categories[i], page: 1)
-                self.collectionView.setContentOffset(.zero, animated: false)
+                self.collectionView.setContentOffset(.zero, animated: false) // roll the view back to top
             }))
             stackView.addArrangedSubview(button)
         }
