@@ -7,9 +7,14 @@
 
 import UIKit
 
+protocol SelectionButtonsViewDelegate: AnyObject {
+    func buttonShouldChange(newSelection: [String]) -> Bool
+}
+
 class SelectionButtonsView: UIView {
 
     var buttons: [UIButton] = []
+    weak var delegate: SelectionButtonsViewDelegate?
     
     private var width: CGFloat = 0
     public var height: CGFloat = 0
@@ -39,6 +44,7 @@ class SelectionButtonsView: UIView {
             button.setTitle(title, for: .normal)
             button.sizeToFit()
             button.addTarget(self, action: #selector(buttonTapped(_:)), for: .touchUpInside)
+            button.isSelected = true
             buttons.append(button)
             self.addSubview(button)
         }
@@ -55,15 +61,14 @@ class SelectionButtonsView: UIView {
         for button in buttons {
             let buttonWidth = button.frame.width
             let buttonHeight = button.frame.height
-            x += paddingX
             
             // This row does not have enough space. Switch to next row.
-            if x + buttonWidth + paddingX > width {
-                x = paddingX
+            if x + buttonWidth > width {
+                x = 0
                 y = y + paddingY + buttonHeight
             }
             button.frame = CGRect(x: x, y: y, width: buttonWidth, height: buttonHeight)
-            x += buttonWidth
+            x += buttonWidth + paddingX
             height = y + buttonHeight
         }
         
@@ -73,6 +78,10 @@ class SelectionButtonsView: UIView {
     
     @objc private func buttonTapped(_ sender: UIButton) {
         sender.isSelected = !sender.isSelected
+        if let delegate = delegate, !delegate.buttonShouldChange(newSelection: getSelection()) {
+            sender.isSelected = !sender.isSelected
+            return
+        }
     }
     
     // Return a comma separated string with all selected options

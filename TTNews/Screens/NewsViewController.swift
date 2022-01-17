@@ -29,11 +29,11 @@ class NewsViewController: UIViewController {
     var collectionView: UICollectionView! = nil
     
     var articles: [Article] = []
-    var currentCategory = ""
+    var currentCategory = "\(Category.general)"
     var currentPage = 0
     var hasMoreArticles = true
     var isLoadingMoreArticles = false
-    var categories = [String]()
+    var categories = Category.allCases.map { "\($0)" }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,25 +44,21 @@ class NewsViewController: UIViewController {
         configureDataSource()
         getArticles()
         
-        let categories = Category.allCases.map { "\($0)" }
         configureButtonsInScrollView(with: categories)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setToolbarHidden(true, animated: true)
-        // TODO: switch to the first category
     }
     
-    func configureNotification() {
-        NotificationCenter.default.addObserver(self, selector: #selector(updateCategories(notification:)), name: Notification.Name(rawValue: "CategorySettingChanged"), object: nil)
-    }
-    
-    @objc func updateCategories(notification: Notification) {
-        // access user info to get the categoreis string array
-        let extraInfo = notification.userInfo
-        if let categories = extraInfo?["categories"] as? [String] {
-            configureButtonsInScrollView(with: categories)
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        // Switch to the first category if previous category is filtered out
+        // This assumes the notification arrives earlier than viewDidAppear()
+        if !categories.contains(currentCategory) {
+            switchToCategory(categories[0], page: 1)
         }
     }
     
@@ -88,6 +84,8 @@ class NewsViewController: UIViewController {
     }
     
     func configureButtonsInScrollView(with categories: [String]) {
+        self.categories = categories
+        
         // remove all subviews
         for view in stackView.arrangedSubviews {
             stackView.removeArrangedSubview(view)
@@ -102,10 +100,26 @@ class NewsViewController: UIViewController {
             // click the button to filter out the articles from the source
             let button = UIButton(configuration: config, primaryAction: UIAction(handler: { [weak self] action in
                 guard let self = self else { return }
-                self.getArticles(category: categories[i], page: 1)
-                self.collectionView.setContentOffset(.zero, animated: false) // roll the view back to top
+                self.switchToCategory(categories[i], page: 1)
             }))
             stackView.addArrangedSubview(button)
+        }
+    }
+    
+    func switchToCategory(_ category: String, page: Int) {
+        getArticles(category: category, page: page)
+        collectionView.setContentOffset(.zero, animated: false) // roll the view back to top
+    }
+    
+    func configureNotification() {
+        NotificationCenter.default.addObserver(self, selector: #selector(updateCategories(notification:)), name: Notification.Name(rawValue: "CategorySettingChanged"), object: nil)
+    }
+    
+    @objc func updateCategories(notification: Notification) {
+        // access user info to get the categoreis string array
+        let extraInfo = notification.userInfo
+        if let categories = extraInfo?["categories"] as? [String] {
+            configureButtonsInScrollView(with: categories)
         }
     }
     

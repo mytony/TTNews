@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SettingsViewController: UIViewController {
+class SettingsViewController: UIViewController, SelectionButtonsViewDelegate {
     
     var chooseSourcesLabel = UILabel(frame: .zero)
     var sourcesSelectionView = SelectionButtonsView()
@@ -16,8 +16,8 @@ class SettingsViewController: UIViewController {
         super.viewDidLoad()
         
         view.backgroundColor = .systemBackground
-//        getSources()
         configureSourcesSection()
+        sourcesSelectionView.delegate = self
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -28,8 +28,7 @@ class SettingsViewController: UIViewController {
     }
     
     func configureSourcesSection() {
-        print(#function)
-        chooseSourcesLabel.text = "Choose multiple sources:"
+        chooseSourcesLabel.text = "Choose at least one categories:"
         
         chooseSourcesLabel.translatesAutoresizingMaskIntoConstraints = false
         sourcesSelectionView.translatesAutoresizingMaskIntoConstraints = false
@@ -39,9 +38,9 @@ class SettingsViewController: UIViewController {
             chooseSourcesLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 8),
             chooseSourcesLabel.leftAnchor.constraint(equalTo: view.layoutMarginsGuide.leftAnchor),
             
-            sourcesSelectionView.topAnchor.constraint(equalTo: chooseSourcesLabel.bottomAnchor),
-            sourcesSelectionView.leftAnchor.constraint(equalTo: view.leftAnchor),
-            sourcesSelectionView.rightAnchor.constraint(equalTo: view.rightAnchor),
+            sourcesSelectionView.topAnchor.constraint(equalTo: chooseSourcesLabel.bottomAnchor, constant: 8),
+            sourcesSelectionView.leftAnchor.constraint(equalTo: chooseSourcesLabel.leftAnchor),
+            sourcesSelectionView.rightAnchor.constraint(equalTo: view.layoutMarginsGuide.rightAnchor),
         ])
         
         
@@ -49,20 +48,5 @@ class SettingsViewController: UIViewController {
         sourcesSelectionView.configureSelectionOptions(titles: categories)
     }
     
-    func getSources() {
-        Task {
-            do {
-                let response = try await NetworkManager.shared.getTopHeadlinesSources()
-                guard let sources = response.sources else { return }
-                let sourceTitles = sources.compactMap { $0.id }
-                DispatchQueue.main.async {
-                    self.sourcesSelectionView.configureSelectionOptions(titles: sourceTitles)
-                }
-            } catch {
-                if let tnError = error as? TNError {
-                    print(tnError.rawValue)
-                }
-            }
-        }
-    }
+    func buttonShouldChange(newSelection: [String]) -> Bool { newSelection.count > 0 }
 }
