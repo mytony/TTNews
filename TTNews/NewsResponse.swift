@@ -8,10 +8,7 @@
 import Foundation
 
 struct NewsResponse: Codable, Hashable {
-//    let status: String
-//    let totalResults: Int?      // only in top-headlines
-    let articles: [Article]?    // only in top-headlines
-    let sources: [Source]?      // only in top-headlines/sources
+    let articles: [Article]
 }
 
 struct Article: Codable, Hashable {
@@ -28,12 +25,5 @@ struct Article: Codable, Hashable {
 struct Source: Codable, Hashable {
     let id: String?
     let name: String
-    
-    // only for top-headlines/sources
-    let description: String?
-    let url: String?
-    let category: String?
-    let language: String?
-    let country: String?
 }
 

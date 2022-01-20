@@ -129,11 +129,7 @@ class NewsViewController: UIViewController {
         Task {
             do {
                 let response = try await NetworkManager.shared.getTopHeadlines(category: category, page: page)
-                guard let articles = response.articles else {
-                    isLoadingMoreArticles = false
-                    return
-                }
-                updateUI(with: articles, category: category, page: page)
+                updateUI(with: response.articles, category: category, page: page)
                 isLoadingMoreArticles = false
             } catch {
                 if let tnError = error as? TNError {

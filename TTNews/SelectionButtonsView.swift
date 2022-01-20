@@ -13,11 +13,11 @@ protocol SelectionButtonsViewDelegate: AnyObject {
 
 class SelectionButtonsView: UIView {
 
-    var buttons: [UIButton] = []
+    private var buttons: [UIButton] = []
     weak var delegate: SelectionButtonsViewDelegate?
     
     private var width: CGFloat = 0
-    public var height: CGFloat = 0
+    private var height: CGFloat = 0
     private let paddingX: CGFloat = 15
     private let paddingY: CGFloat = 5
     
@@ -55,7 +55,6 @@ class SelectionButtonsView: UIView {
         width = self.frame.width
         assert(width > 0)
         var x = 0.0, y = 0.0
-        print("View frame:", self.frame, "View bound", self.bounds)
         
         
         for button in buttons {
