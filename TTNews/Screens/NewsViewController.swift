@@ -25,8 +25,8 @@ class NewsViewController: UIViewController {
         return stackView
     }()
     
-    var dataSource: UICollectionViewDiffableDataSource<Section, Article>! = nil
-    var collectionView: UICollectionView! = nil
+    var dataSource: UICollectionViewDiffableDataSource<Section, Article>!
+    var collectionView: UICollectionView!
     
     var articles: [Article] = []
     var currentCategory = "\(Category.general)"
@@ -38,7 +38,7 @@ class NewsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .secondarySystemBackground
-        configureNotification()
+        observeCategoryNotification()
         configureScrollView()
         configureCollectionView()
         configureDataSource()
@@ -68,6 +68,7 @@ class NewsViewController: UIViewController {
         view.addSubview(scrollView)
         scrollView.addSubview(stackView)
         
+        scrollView.showsHorizontalScrollIndicator = false
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         stackView.translatesAutoresizingMaskIntoConstraints = false // stack view won't display without this line
         
@@ -80,7 +81,6 @@ class NewsViewController: UIViewController {
         ])
         
         stackView.pinToEdges(of: scrollView)
-        scrollView.showsHorizontalScrollIndicator = false
     }
     
     func configureButtonsInScrollView(with categories: [String]) {
@@ -111,7 +111,7 @@ class NewsViewController: UIViewController {
         collectionView.setContentOffset(.zero, animated: false) // roll the view back to top
     }
     
-    func configureNotification() {
+    func observeCategoryNotification() {
         NotificationCenter.default.addObserver(self, selector: #selector(updateCategories(notification:)), name: Notification.Name(rawValue: "CategorySettingChanged"), object: nil)
     }
     
@@ -138,7 +138,6 @@ class NewsViewController: UIViewController {
             } catch {
                 if let tnError = error as? TNError {
                     print(tnError.rawValue)
-                    print("Printing the error")
                 }
                 isLoadingMoreArticles = false
             }

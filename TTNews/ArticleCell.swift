@@ -8,7 +8,7 @@
 import UIKit
 
 class ArticleCell: UICollectionViewCell {
-    static let reuseID = "ArticleCell"
+    
     let newsImageView = UIImageView(frame: .zero)
     let titleLabel = UILabel()
     
@@ -41,16 +41,14 @@ class ArticleCell: UICollectionViewCell {
             newsImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             newsImageView.heightAnchor.constraint(equalTo: newsImageView.widthAnchor, multiplier: 0.75),
             
-            titleLabel.topAnchor.constraint(equalTo: newsImageView.bottomAnchor, constant: 8),
-            titleLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -8),
+            titleLabel.topAnchor.constraint(equalTo: newsImageView.bottomAnchor, constant: padding),
+            titleLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -padding),
             titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 12),
             titleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -padding),
         ])
         
         contentView.layer.cornerRadius = 10.0
         contentView.layer.masksToBounds = true
-//        self.contentView.layer.borderWidth = 1.0
-//        self.contentView.layer.borderColor = UIColor.clear.cgColor
     }
     
     func downloadImage(fromURL url: String) {

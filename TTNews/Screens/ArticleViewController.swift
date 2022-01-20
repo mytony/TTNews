@@ -8,7 +8,7 @@
 import UIKit
 import WebKit
 
-class ArticleViewController: UIViewController, WKUIDelegate {
+class ArticleViewController: UIViewController {
     
     var webView: WKWebView!
     let url: URL
@@ -16,17 +16,13 @@ class ArticleViewController: UIViewController, WKUIDelegate {
     override func loadView() {
         let webConfiguration = WKWebViewConfiguration()
         webView = WKWebView(frame: .zero, configuration: webConfiguration)
-        webView.uiDelegate = self
         view = webView
     }
     
     init(with url: URL) {
         self.url = url
         super.init(nibName: nil, bundle: nil)
-        
-        let backBarButton = UIBarButtonItem(image: UIImage(systemName: "arrow.backward"), style: .plain, target: webView, action: #selector(WKWebView.goBack))
-        let forwardBarButton = UIBarButtonItem(image: UIImage(systemName: "arrow.forward"), style: .plain, target: webView, action: #selector(WKWebView.goForward))
-        setToolbarItems([backBarButton, forwardBarButton], animated: false)
+        configureToolBar()
     }
     
     required init?(coder: NSCoder) {
@@ -43,5 +39,11 @@ class ArticleViewController: UIViewController, WKUIDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setToolbarHidden(false, animated: true)
+    }
+    
+    fileprivate func configureToolBar() {
+        let backBarButton = UIBarButtonItem(image: UIImage(systemName: "arrow.backward"), style: .plain, target: webView, action: #selector(WKWebView.goBack))
+        let forwardBarButton = UIBarButtonItem(image: UIImage(systemName: "arrow.forward"), style: .plain, target: webView, action: #selector(WKWebView.goForward))
+        setToolbarItems([backBarButton, forwardBarButton], animated: false)
     }
 }
