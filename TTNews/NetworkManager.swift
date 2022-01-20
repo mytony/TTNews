@@ -21,7 +21,7 @@ class NetworkManager {
     
     static let shared = NetworkManager()
     private let baseComponents = URLComponents(string: "https://newsapi.org")
-    private let apiKey = "PUT YOUR KEY HERE"
+    private let apiKey = Keys.newsAPI
     let cache = NSCache<NSString, UIImage>()
     let decoder = JSONDecoder()
     static let defaultPageSize = 20

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		DD4D2B142796014D0013CD4F /* TTNewsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4D2B132796014D0013CD4F /* TTNewsTests.swift */; };
+		DD4D2B1B279916A50013CD4F /* Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4D2B1A279916A50013CD4F /* Keys.swift */; };
 		DD8D62A1278654F5005C7975 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD8D62A0278654F5005C7975 /* NetworkManager.swift */; };
 		DD8D62A3278659C7005C7975 /* TNError.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD8D62A2278659C7005C7975 /* TNError.swift */; };
 		DD8D62A52786B528005C7975 /* NewsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD8D62A42786B528005C7975 /* NewsResponse.swift */; };
@@ -38,6 +39,7 @@
 /* Begin PBXFileReference section */
 		DD4D2B112796014D0013CD4F /* TTNewsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TTNewsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD4D2B132796014D0013CD4F /* TTNewsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TTNewsTests.swift; sourceTree = "<group>"; };
+		DD4D2B1A279916A50013CD4F /* Keys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keys.swift; sourceTree = "<group>"; };
 		DD8D62A0278654F5005C7975 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		DD8D62A2278659C7005C7975 /* TNError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TNError.swift; sourceTree = "<group>"; };
 		DD8D62A42786B528005C7975 /* NewsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsResponse.swift; sourceTree = "<group>"; };
@@ -114,6 +116,7 @@
 				DD8D62A2278659C7005C7975 /* TNError.swift */,
 				DD8D62A62788FE21005C7975 /* ArticleCell.swift */,
 				DDF5E4D1278F61A600F5BB46 /* SelectionButtonsView.swift */,
+				DD4D2B1A279916A50013CD4F /* Keys.swift */,
 			);
 			path = TTNews;
 			sourceTree = "<group>";
@@ -267,6 +270,7 @@
 				DDF5E4D4278F62FE00F5BB46 /* SettingsViewController.swift in Sources */,
 				DDC2CE892785064500927CF2 /* UIView+Ext.swift in Sources */,
 				DDF5E4CC278CF46500F5BB46 /* ArticleViewController.swift in Sources */,
+				DD4D2B1B279916A50013CD4F /* Keys.swift in Sources */,
 				DDC2CE732784D5A000927CF2 /* AppDelegate.swift in Sources */,
 				DDC2CE752784D5A000927CF2 /* SceneDelegate.swift in Sources */,
 			);
