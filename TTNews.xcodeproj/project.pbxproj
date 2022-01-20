@@ -85,6 +85,24 @@
 			path = TTNewsTests;
 			sourceTree = "<group>";
 		};
+		DD4D2B1C2799DA830013CD4F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				DD8D62A42786B528005C7975 /* NewsResponse.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		DD4D2B1D2799DA920013CD4F /* Custom Views */ = {
+			isa = PBXGroup;
+			children = (
+				DDC2CE862784F96800927CF2 /* TTNewsTabBarController.swift */,
+				DD8D62A62788FE21005C7975 /* ArticleCell.swift */,
+				DDF5E4D1278F61A600F5BB46 /* SelectionButtonsView.swift */,
+			);
+			path = "Custom Views";
+			sourceTree = "<group>";
+		};
 		DDC2CE662784D5A000927CF2 = {
 			isa = PBXGroup;
 			children = (
@@ -106,16 +124,14 @@
 		DDC2CE712784D5A000927CF2 /* TTNews */ = {
 			isa = PBXGroup;
 			children = (
+				DD4D2B1D2799DA920013CD4F /* Custom Views */,
+				DD4D2B1C2799DA830013CD4F /* Model */,
 				DDF5E4C8278A572D00F5BB46 /* Extensions */,
 				DDF5E4CF278E5B7600F5BB46 /* Screens */,
 				DDF5E4D0278E5BC000F5BB46 /* Support */,
 				DDC2CE802784D5A100927CF2 /* Info.plist */,
-				DDC2CE862784F96800927CF2 /* TTNewsTabBarController.swift */,
-				DD8D62A42786B528005C7975 /* NewsResponse.swift */,
 				DD8D62A0278654F5005C7975 /* NetworkManager.swift */,
 				DD8D62A2278659C7005C7975 /* TNError.swift */,
-				DD8D62A62788FE21005C7975 /* ArticleCell.swift */,
-				DDF5E4D1278F61A600F5BB46 /* SelectionButtonsView.swift */,
 				DD4D2B1A279916A50013CD4F /* Keys.swift */,
 			);
 			path = TTNews;
