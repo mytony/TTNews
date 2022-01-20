@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		DD4D2B142796014D0013CD4F /* TTNewsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4D2B132796014D0013CD4F /* TTNewsTests.swift */; };
 		DD4D2B1B279916A50013CD4F /* Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4D2B1A279916A50013CD4F /* Keys.swift */; };
+		DD4D2B252799DD670013CD4F /* TTNewsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4D2B242799DD670013CD4F /* TTNewsUITests.swift */; };
+		DD4D2B272799DD670013CD4F /* TTNewsUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4D2B262799DD670013CD4F /* TTNewsUITestsLaunchTests.swift */; };
 		DD8D62A1278654F5005C7975 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD8D62A0278654F5005C7975 /* NetworkManager.swift */; };
 		DD8D62A3278659C7005C7975 /* TNError.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD8D62A2278659C7005C7975 /* TNError.swift */; };
 		DD8D62A52786B528005C7975 /* NewsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD8D62A42786B528005C7975 /* NewsResponse.swift */; };
@@ -34,12 +36,22 @@
 			remoteGlobalIDString = DDC2CE6E2784D5A000927CF2;
 			remoteInfo = TTNews;
 		};
+		DD4D2B282799DD670013CD4F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DDC2CE672784D5A000927CF2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = DDC2CE6E2784D5A000927CF2;
+			remoteInfo = TTNews;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		DD4D2B112796014D0013CD4F /* TTNewsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TTNewsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD4D2B132796014D0013CD4F /* TTNewsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TTNewsTests.swift; sourceTree = "<group>"; };
 		DD4D2B1A279916A50013CD4F /* Keys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keys.swift; sourceTree = "<group>"; };
+		DD4D2B222799DD670013CD4F /* TTNewsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TTNewsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		DD4D2B242799DD670013CD4F /* TTNewsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TTNewsUITests.swift; sourceTree = "<group>"; };
+		DD4D2B262799DD670013CD4F /* TTNewsUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TTNewsUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		DD8D62A0278654F5005C7975 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		DD8D62A2278659C7005C7975 /* TNError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TNError.swift; sourceTree = "<group>"; };
 		DD8D62A42786B528005C7975 /* NewsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsResponse.swift; sourceTree = "<group>"; };
@@ -61,6 +73,13 @@
 
 /* Begin PBXFrameworksBuildPhase section */
 		DD4D2B0E2796014D0013CD4F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DD4D2B1F2799DD670013CD4F /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -103,11 +122,21 @@
 			path = "Custom Views";
 			sourceTree = "<group>";
 		};
+		DD4D2B232799DD670013CD4F /* TTNewsUITests */ = {
+			isa = PBXGroup;
+			children = (
+				DD4D2B242799DD670013CD4F /* TTNewsUITests.swift */,
+				DD4D2B262799DD670013CD4F /* TTNewsUITestsLaunchTests.swift */,
+			);
+			path = TTNewsUITests;
+			sourceTree = "<group>";
+		};
 		DDC2CE662784D5A000927CF2 = {
 			isa = PBXGroup;
 			children = (
 				DDC2CE712784D5A000927CF2 /* TTNews */,
 				DD4D2B122796014D0013CD4F /* TTNewsTests */,
+				DD4D2B232799DD670013CD4F /* TTNewsUITests */,
 				DDC2CE702784D5A000927CF2 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -117,6 +146,7 @@
 			children = (
 				DDC2CE6F2784D5A000927CF2 /* TTNews.app */,
 				DD4D2B112796014D0013CD4F /* TTNewsTests.xctest */,
+				DD4D2B222799DD670013CD4F /* TTNewsUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -188,6 +218,24 @@
 			productReference = DD4D2B112796014D0013CD4F /* TTNewsTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		DD4D2B212799DD670013CD4F /* TTNewsUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DD4D2B2A2799DD670013CD4F /* Build configuration list for PBXNativeTarget "TTNewsUITests" */;
+			buildPhases = (
+				DD4D2B1E2799DD670013CD4F /* Sources */,
+				DD4D2B1F2799DD670013CD4F /* Frameworks */,
+				DD4D2B202799DD670013CD4F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				DD4D2B292799DD670013CD4F /* PBXTargetDependency */,
+			);
+			name = TTNewsUITests;
+			productName = TTNewsUITests;
+			productReference = DD4D2B222799DD670013CD4F /* TTNewsUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 		DDC2CE6E2784D5A000927CF2 /* TTNews */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = DDC2CE832784D5A100927CF2 /* Build configuration list for PBXNativeTarget "TTNews" */;
@@ -219,6 +267,10 @@
 						CreatedOnToolsVersion = 13.2.1;
 						TestTargetID = DDC2CE6E2784D5A000927CF2;
 					};
+					DD4D2B212799DD670013CD4F = {
+						CreatedOnToolsVersion = 13.2.1;
+						TestTargetID = DDC2CE6E2784D5A000927CF2;
+					};
 					DDC2CE6E2784D5A000927CF2 = {
 						CreatedOnToolsVersion = 13.2.1;
 					};
@@ -239,12 +291,20 @@
 			targets = (
 				DDC2CE6E2784D5A000927CF2 /* TTNews */,
 				DD4D2B102796014D0013CD4F /* TTNewsTests */,
+				DD4D2B212799DD670013CD4F /* TTNewsUITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
 		DD4D2B0F2796014D0013CD4F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DD4D2B202799DD670013CD4F /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -268,6 +328,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				DD4D2B142796014D0013CD4F /* TTNewsTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DD4D2B1E2799DD670013CD4F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DD4D2B252799DD670013CD4F /* TTNewsUITests.swift in Sources */,
+				DD4D2B272799DD670013CD4F /* TTNewsUITestsLaunchTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -299,6 +368,11 @@
 			isa = PBXTargetDependency;
 			target = DDC2CE6E2784D5A000927CF2 /* TTNews */;
 			targetProxy = DD4D2B152796014D0013CD4F /* PBXContainerItemProxy */;
+		};
+		DD4D2B292799DD670013CD4F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = DDC2CE6E2784D5A000927CF2 /* TTNews */;
+			targetProxy = DD4D2B282799DD670013CD4F /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -347,6 +421,40 @@
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TTNews.app/TTNews";
+			};
+			name = Release;
+		};
+		DD4D2B2B2799DD670013CD4F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = AGJLHCK49T;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mengyuchung.TTNewsUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = TTNews;
+			};
+			name = Debug;
+		};
+		DD4D2B2C2799DD670013CD4F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = AGJLHCK49T;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mengyuchung.TTNewsUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = TTNews;
 			};
 			name = Release;
 		};
@@ -528,6 +636,15 @@
 			buildConfigurations = (
 				DD4D2B172796014D0013CD4F /* Debug */,
 				DD4D2B182796014D0013CD4F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DD4D2B2A2799DD670013CD4F /* Build configuration list for PBXNativeTarget "TTNewsUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DD4D2B2B2799DD670013CD4F /* Debug */,
+				DD4D2B2C2799DD670013CD4F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
