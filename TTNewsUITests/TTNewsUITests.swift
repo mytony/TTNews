@@ -8,35 +8,51 @@
 import XCTest
 
 class TTNewsUITests: XCTestCase {
+    
+    var app: XCUIApplication!
 
     override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-
-        // In UI tests it is usually best to stop immediately when a failure occurs.
+        try super.setUpWithError()
         continueAfterFailure = false
 
-        // In UI tests it’s important to set the initial state - such as interface orientation - required for your tests before they run. The setUp method is a good place to do this.
-    }
-
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
-
-    func testExample() throws {
-        // UI tests must launch the application that they test.
-        let app = XCUIApplication()
+        app = XCUIApplication()
         app.launch()
-
-        // Use recording to get started writing UI tests.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
     }
 
-    func testLaunchPerformance() throws {
-        if #available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 7.0, *) {
-            // This measures how long it takes to launch your application.
-            measure(metrics: [XCTApplicationLaunchMetric()]) {
-                XCUIApplication().launch()
-            }
-        }
+    func testComponentsExistInNewsPage() throws {
+        let scrollViewElements = app.scrollViews.otherElements
+        XCTAssertTrue(scrollViewElements.buttons["General"].exists)
+        XCTAssertTrue(scrollViewElements.buttons["Business"].exists)
+        XCTAssertTrue(scrollViewElements.buttons["Entertainment"].exists)
+        XCTAssertTrue(scrollViewElements.buttons["Health"].exists)
+        XCTAssertTrue(scrollViewElements.buttons["Science"].exists)
+        XCTAssertTrue(scrollViewElements.buttons["Sports"].exists)
+        XCTAssertTrue(scrollViewElements.buttons["Technology"].exists)
+        
+        XCTAssertTrue(app.collectionViews.element.exists)
+    }
+    
+    
+    // Disable all categories but the last one won't be allowed to disable
+    func testDisableAllCateogryAttempt() throws {
+        app.tabBars["Tab Bar"].buttons["Settings"].tap()
+
+        app.buttons["General"].tap()
+        app.buttons["Business"].tap()
+        app.buttons["Entertainment"].tap()
+        app.buttons["Health"].tap()
+        app.buttons["Science"].tap()
+        app.buttons["Sports"].tap()
+        app.buttons["Technology"].tap()
+
+        app.tabBars["Tab Bar"].buttons["News"].tap()
+
+        XCTAssertFalse(app.buttons["General"].exists)
+        XCTAssertFalse(app.buttons["Business"].exists)
+        XCTAssertFalse(app.buttons["Entertainment"].exists)
+        XCTAssertFalse(app.buttons["Health"].exists)
+        XCTAssertFalse(app.buttons["Science"].exists)
+        XCTAssertFalse(app.buttons["Sports"].exists)
+        XCTAssertTrue(app.buttons["Technology"].exists)
     }
 }
