@@ -11,6 +11,11 @@ protocol SelectionButtonsViewDelegate: AnyObject {
     func buttonShouldChange(newSelection: [String]) -> Bool
 }
 
+/// A view that contains toggle buttons which lays from left to right and top to bottom.
+/// Users can select/cancel each button for desired configuration.
+///
+/// The leading, trailing, top needs to be defined. The bottom would automatically strectch
+/// based on the buttons layout. Call `configureSelectionOptions(titles:)` to add buttons.
 class SelectionButtonsView: UIView {
 
     var buttons: [UIButton] = []
@@ -38,6 +43,12 @@ class SelectionButtonsView: UIView {
         layoutButtons()
     }
     
+    /// Create toggle buttons from `titles` array
+    ///
+    /// ```
+    /// let categories = ["General", "Business"]
+    /// configureSelectionOptions(titles: categories)
+    /// ```
     func configureSelectionOptions(titles: [String]) {
         for title in titles {
             let button = UIButton(type: .system)
@@ -83,7 +94,7 @@ class SelectionButtonsView: UIView {
         }
     }
     
-    // Return a comma separated string with all selected options
+    /// - Returns: A String array containing all selected options
     func getSelection() -> [String] {
         var selectedOptions = [String]()
         for button in buttons {

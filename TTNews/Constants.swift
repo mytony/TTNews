@@ -10,3 +10,7 @@ import Foundation
 enum NotificationNames {
     static let categorySettingChanged = Notification.Name(rawValue: "CategorySettingChanged")
 }
+
+enum Settings {
+    case categories
+}

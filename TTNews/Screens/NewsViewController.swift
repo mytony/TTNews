@@ -44,7 +44,7 @@ class NewsViewController: UIViewController {
         configureDataSource()
         getArticles()
         
-        configureButtonsInScrollView(with: categories)
+        configureCategoryButtonsInScrollView(with: categories)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -83,21 +83,22 @@ class NewsViewController: UIViewController {
         stackView.pinToEdges(of: scrollView)
     }
     
-    func configureButtonsInScrollView(with categories: [String]) {
+    func configureCategoryButtonsInScrollView(with categories: [String]) {
         self.categories = categories
         
-        // remove all subviews
+        // Remove all subviews
         for view in stackView.arrangedSubviews {
             stackView.removeArrangedSubview(view)
             view.removeFromSuperview()
         }
         
+        // Create buttons based on categories
         for i in 0..<categories.count {
             var config = UIButton.Configuration.tinted()
             config.title = categories[i].capitalizingFirstLetter()
             config.baseForegroundColor = .secondaryLabel
             
-            // click the button to filter out the articles from the source
+            // Click the button to filter out the articles from the source
             let button = UIButton(configuration: config, primaryAction: UIAction(handler: { [weak self] action in
                 guard let self = self else { return }
                 self.switchToCategory(categories[i], page: 1)
@@ -118,8 +119,8 @@ class NewsViewController: UIViewController {
     @objc func updateCategories(notification: Notification) {
         // access user info to get the categoreis string array
         let extraInfo = notification.userInfo
-        if let categories = extraInfo?["categories"] as? [String] {
-            configureButtonsInScrollView(with: categories)
+        if let categories = extraInfo?[Settings.categories] as? [String] {
+            configureCategoryButtonsInScrollView(with: categories)
         }
     }
     

@@ -11,7 +11,7 @@
 		DD4D2B1B279916A50013CD4F /* Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4D2B1A279916A50013CD4F /* Keys.swift */; };
 		DD4D2B252799DD670013CD4F /* TTNewsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4D2B242799DD670013CD4F /* TTNewsUITests.swift */; };
 		DD4D2B272799DD670013CD4F /* TTNewsUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4D2B262799DD670013CD4F /* TTNewsUITestsLaunchTests.swift */; };
-		DD4D2B2E279A62D00013CD4F /* TTNewsMainPageTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4D2B2D279A62D00013CD4F /* TTNewsMainPageTest.swift */; };
+		DD4D2B2E279A62D00013CD4F /* SettingsViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4D2B2D279A62D00013CD4F /* SettingsViewControllerTests.swift */; };
 		DD4D2B32279A6C810013CD4F /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4D2B31279A6C810013CD4F /* Constants.swift */; };
 		DD8D62A1278654F5005C7975 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD8D62A0278654F5005C7975 /* NetworkManager.swift */; };
 		DD8D62A3278659C7005C7975 /* TNError.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD8D62A2278659C7005C7975 /* TNError.swift */; };
@@ -54,7 +54,7 @@
 		DD4D2B222799DD670013CD4F /* TTNewsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TTNewsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD4D2B242799DD670013CD4F /* TTNewsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TTNewsUITests.swift; sourceTree = "<group>"; };
 		DD4D2B262799DD670013CD4F /* TTNewsUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TTNewsUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		DD4D2B2D279A62D00013CD4F /* TTNewsMainPageTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TTNewsMainPageTest.swift; sourceTree = "<group>"; };
+		DD4D2B2D279A62D00013CD4F /* SettingsViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewControllerTests.swift; sourceTree = "<group>"; };
 		DD4D2B31279A6C810013CD4F /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		DD8D62A0278654F5005C7975 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		DD8D62A2278659C7005C7975 /* TNError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TNError.swift; sourceTree = "<group>"; };
@@ -104,7 +104,7 @@
 			isa = PBXGroup;
 			children = (
 				DD4D2B132796014D0013CD4F /* TTNewsTests.swift */,
-				DD4D2B2D279A62D00013CD4F /* TTNewsMainPageTest.swift */,
+				DD4D2B2D279A62D00013CD4F /* SettingsViewControllerTests.swift */,
 			);
 			path = TTNewsTests;
 			sourceTree = "<group>";
@@ -333,7 +333,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DD4D2B2E279A62D00013CD4F /* TTNewsMainPageTest.swift in Sources */,
+				DD4D2B2E279A62D00013CD4F /* SettingsViewControllerTests.swift in Sources */,
 				DD4D2B142796014D0013CD4F /* TTNewsTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

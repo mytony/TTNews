@@ -24,11 +24,6 @@ class SettingsViewController: UIViewController, SelectionButtonsViewDelegate {
         postCategoryNotification()
     }
     
-    func postCategoryNotification() {
-        let extraInfo = ["categories": sourcesSelectionView.getSelection()]
-        NotificationCenter.default.post(name: NotificationNames.categorySettingChanged, object: nil, userInfo: extraInfo)
-    }
-    
     func configureSourcesSection() {
         chooseSourcesLabel.text = "Choose at least one categories:"
         chooseSourcesLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -51,6 +46,11 @@ class SettingsViewController: UIViewController, SelectionButtonsViewDelegate {
         
         let categories = Category.allCases.map { "\($0)".capitalizingFirstLetter() }
         sourcesSelectionView.configureSelectionOptions(titles: categories)
+    }
+    
+    func postCategoryNotification() {
+        let extraInfo = [Settings.categories: sourcesSelectionView.getSelection()]
+        NotificationCenter.default.post(name: NotificationNames.categorySettingChanged, object: nil, userInfo: extraInfo)
     }
     
     func buttonShouldChange(newSelection: [String]) -> Bool { newSelection.count > 0 }
