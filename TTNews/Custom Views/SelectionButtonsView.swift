@@ -13,7 +13,7 @@ protocol SelectionButtonsViewDelegate: AnyObject {
 
 class SelectionButtonsView: UIView {
 
-    private var buttons: [UIButton] = []
+    var buttons: [UIButton] = []
     weak var delegate: SelectionButtonsViewDelegate?
     
     private var width: CGFloat = 0

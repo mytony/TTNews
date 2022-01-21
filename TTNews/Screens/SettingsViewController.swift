@@ -26,7 +26,7 @@ class SettingsViewController: UIViewController, SelectionButtonsViewDelegate {
     
     func postCategoryNotification() {
         let extraInfo = ["categories": sourcesSelectionView.getSelection()]
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "CategorySettingChanged"), object: nil, userInfo: extraInfo)
+        NotificationCenter.default.post(name: NotificationNames.categorySettingChanged, object: nil, userInfo: extraInfo)
     }
     
     func configureSourcesSection() {

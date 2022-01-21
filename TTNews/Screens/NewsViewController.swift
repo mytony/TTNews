@@ -112,7 +112,7 @@ class NewsViewController: UIViewController {
     }
     
     func observeCategoryNotification() {
-        NotificationCenter.default.addObserver(self, selector: #selector(updateCategories(notification:)), name: Notification.Name(rawValue: "CategorySettingChanged"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(updateCategories(notification:)), name: NotificationNames.categorySettingChanged, object: nil)
     }
     
     @objc func updateCategories(notification: Notification) {
