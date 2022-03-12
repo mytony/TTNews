@@ -2,6 +2,7 @@
 An iOS news app that provides US top headlines and category selection
 
 **_App Demo_**
+
 https://user-images.githubusercontent.com/9066296/158003097-dfab3326-5c20-4da0-a459-e225d3babe29.mov
 
 **_Demo Highlights_**
