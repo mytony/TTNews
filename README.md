@@ -7,11 +7,11 @@ https://user-images.githubusercontent.com/9066296/158003097-dfab3326-5c20-4da0-a
 
 **_Demo Highlights_**
 (in timeline order)
-1. Chooses different category from the top
+1. Chooses different categories from the top
 2. Views each news
-3. Changes category filters in Settings tab and the change is effective immediately when switching back to News tab.
+3. Changes category filters in the Settings tab and the change is effective immediately when switching back to the News tab.
 4. Dark mode
-5. Scroll down and more news are loaded.
+5. Scroll down and more news is loaded.
 
 **_Code Highlights_**
 * Fetches from endpoint
